@@ -1,0 +1,36 @@
+- name: generate SSH key
+  hosts: server
+  connection: local
+  vars:
+    ssh_key_filename: id_rsa
+  vars_prompt:
+    - name: "ssh_passphrase"
+      prompt: "Enter the passphrase for the SSH key"
+  tasks:
+    - name: generate SSH key "{{ssh_key_filename}}"
+      user:
+        name: "ubuntu"
+        generate_ssh_key: yes
+        ssh_key_type: rsa
+        ssh_key_bits: 4096
+        ssh_key_file: /home/ubuntu/.ssh/{{ssh_key_filename}}
+        ssh_key_passphrase: "{{ssh_passphrase}}"
+        force: no
+
+- name: add user
+  hosts: remote
+  user: ubuntu
+  become: true
+  tasks:
+    - name: Add a new user
+      user:
+        name: adibitan_2
+        shell: /bin/bash
+        generate_ssh_key: yes
+        ssh_key_bits: 4096
+        ssh_key_file: .ssh/id_rsa
+    - name: Deploy SSH Key
+      authorized_key: 
+        user=adibitan_2
+        state=present        
+        key="{{ lookup('file', '/home/ubuntu/.ssh/id_rsa.pub') }}"
