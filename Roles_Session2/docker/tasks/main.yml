@@ -1,6 +1,0 @@
-- name: Include ubuntu task list
-  include_tasks: ubuntu.yml
-  when: ansible_facts['distribution'] == "Ubuntu"
-- name: Include centos-redhat task list
-  include_tasks: centos-redhat.yml
-  when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
