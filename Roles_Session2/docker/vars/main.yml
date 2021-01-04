@@ -1,0 +1,20 @@
+# vars file for docker
+user_for_ubuntu: ubuntu
+user_for_centos: centos
+
+yum_utils:
+  - yum-utils
+  - device-mapper-persistent-data
+  - lvm2
+  - python3-pip
+redhat_repository: https://download.docker.com/linux/centos/docker-ce.repo
+redhat_repository_dest: /etc/yum.repos.d/docker-ce.repo
+Docker_Edge_repo: /etc/yum.repos.d/docer-ce.repo
+Docker_Test_repo: /etc/yum.repos.d/docer-ce.repo
+docker_yum_gpg_key: https://download.docker.com/linux/centos/gpg
+
+docker_packages:
+  - docker-ce
+  - docker-ce-cli
+  - containerd.io
+
