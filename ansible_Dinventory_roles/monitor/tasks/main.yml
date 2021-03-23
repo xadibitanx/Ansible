@@ -1,0 +1,7 @@
+# tasks file for monitor
+---
+- name: Transfer local Files for docker compose
+  copy: src=/home/ubuntu/ansible/compose dest=/home/ubuntu mode=0777
+
+- name: cd into dir
+  command: bash /home/ubuntu/compose/cd.sh

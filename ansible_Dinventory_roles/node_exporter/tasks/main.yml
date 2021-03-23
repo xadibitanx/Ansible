@@ -1,0 +1,6 @@
+---
+- name: Transfer script node_exporter
+  copy: src=/home/ubuntu/ansible/node.sh dest=/home/ubuntu/node.sh mode=0777
+
+- name: Execute script node_exporter
+  command: bash /home/ubuntu/node.sh

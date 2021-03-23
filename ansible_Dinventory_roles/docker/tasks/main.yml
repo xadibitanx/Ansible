@@ -1,0 +1,8 @@
+
+---
+- name: Transfer script docker
+  copy: src=/home/ubuntu/ansible/opsschool-monitoring/setup dest=/home/ubuntu/ mode=0777
+
+- name: Execute script node_exporter
+  command: bash /home/ubuntu/setup/inst_docker.sh
+

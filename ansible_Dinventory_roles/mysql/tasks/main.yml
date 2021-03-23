@@ -1,0 +1,8 @@
+---
+# tasks file for mysql
+# tasks file for monitor
+---
+- name: install mysql-server
+  command: sudo apt install mysql-server
+
+

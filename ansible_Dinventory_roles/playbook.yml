@@ -1,0 +1,43 @@
+---
+- name: Transfer node_exporter_script
+  hosts: tag_Environment_Dev
+  user: ubuntu
+  become: yes
+
+  roles:
+  - node_exporter
+  
+- name: install java on jenkins slaves
+  hosts: tag_Name_jenkins_slave_1, tag_Name_jenkins_slave_1
+  user: ubuntu
+  become: yes
+
+  roles:
+  - java_installation
+
+
+- name: install docker-compose on targets
+  hosts: tag_Name_monitor_1
+  user: ubuntu
+  become: yes
+
+  roles:
+  - docker
+
+
+- name: docker compose to prometheus and grafana
+  hosts: tag_Name_monitor_1
+  user: ubuntu
+  become: yes
+
+  roles:
+  - monitor
+
+- name: Insatll mysql server
+  hosts: tag_Name_mysql_1
+  user: ubuntu
+  become: yes
+
+  roles:
+  - monitor
+
