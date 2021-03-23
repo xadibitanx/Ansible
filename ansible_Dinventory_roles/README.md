@@ -18,3 +18,5 @@ enable_plugins = aws_ec2, host_list
 
 
 
+To run all:
+ansible-playbook -i aws_ec2.yml playbook.yml --u ubuntu --private-key=private_key.pem
